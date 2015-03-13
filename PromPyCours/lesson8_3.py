@@ -16,9 +16,7 @@ print bouquets(200,300,400,100000) # 3524556
 
 def bouquets(narcissus_price, tulip_price, rose_price, summ):
 
-
     return 0
-
 
 print 'TestIsDone success 2 and done'
 
