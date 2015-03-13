@@ -3,7 +3,7 @@ def bouquets(narcissus_price, tulip_price, rose_price, summ):
 
     return 0
 
-print 'TestIsDone success 2'
+print 'TestIsDone success 2 and done'
 
 
 
