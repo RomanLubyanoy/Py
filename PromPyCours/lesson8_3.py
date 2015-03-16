@@ -42,11 +42,11 @@ def bouquets(narcissus_price, tulip_price, rose_price, summ):
         return rez
 #                    print na, tu, ro, '-', na*narcissus_price + tu*tulip_price + ro*rose_price
 
-print bouquets(21.25,13.6,10.5,100) #51
-print bouquets(15.5,4.1,5.99,21.75)
+#print bouquets(21.25,13.6,10.5,100) #51
+#print bouquets(15.5,4.1,5.99,21.75)
 #print bouquets(1,1,1,5) # 34
 #print bouquets(2,3,4,10) # 12
-print bouquets(2,3,4,100) # 4019 (11605)(8037)
+#print bouquets(2,3,4,100) # 4019 (11605)(8037)
 #print bouquets(200,300,400,100000) #3524556 (7049112)
 #print (1) % 2
 #print 'TestIsDone success 2 and done'

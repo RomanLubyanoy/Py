@@ -39,6 +39,21 @@ from random import shuffle
 
 
 def make_sudoku(size):
+    f_size = size ** 2
+    idx = 1
+#    rez = [[0]*(f_size) for i in range(f_size)]
+    rez = []
+    vals = [i for i in range(1, f_size + 1)]
+    for i in range(1, f_size + 1):
+        rez.append(vals)
+        if i != 6:
+            vals = vals[size:] + vals[:size]
+        if i == 3 or i == 6:
+            vals = vals[idx:] + vals[:idx]
+            idx += 1
+
+    return rez
+"""
     vals = [i for i in range(1, size ** 2 + 1)]
     rez = [[0 for j in range(1, size ** 2 + 1)] for i in range(1, size ** 2 + 1)]
     shuffle(vals)
@@ -48,20 +63,21 @@ def make_sudoku(size):
     r_count = 0
     c_count = 1
 
-    for s_size in range(len(rez)):
+    for s_size in range(len(rez)-1):
 
         for ii in range(0, len(r_value)):
-            rez[r_count][s_size] = r_value[ii]
+            rez[s_size][r_count + ii] = r_value[ii]
         for jj in range(0, len(c_value)):
                 rez[jj + 1][c_count - 1] = c_value[jj]
-#        print r_value
+        print r_value
 #        print c_value
 
-        r_value.pop()
+        r_value.remove(rez[s_size + 1][0])
+        shuffle(r_value)
         r_count += 1
 
     return rez
-"""
+ #trash
     while count != 1:
         rez = []
         for i in range(size ** 2):
@@ -80,11 +96,14 @@ def make_sudoku(size):
                 break
     return rez
 """
+
 l = make_sudoku(3) # [[1]]
 #print l
 print '----------'
 for ii in range(len(l)):
     print l[ii]
+
+print len(l), len(l[0])
 #print set(l[0][0], l[1][0], l[2][0], l[3][0])
 
 
@@ -97,3 +116,5 @@ print l
 shuffle(l)
 print l
 """
+
+print 6 % 3
