@@ -129,8 +129,8 @@ maze_example4 = {
     'f': (4,5)
 }
 
-maze_runner = MazeRunner(maze_example2['m'], maze_example2['s'], maze_example2['f'])
-#maze_runner = MazeRunner(maze_example3['m'], maze_example3['s'], maze_example3['f'])
+#maze_runner = MazeRunner(maze_example2['m'], maze_example2['s'], maze_example2['f'])
+maze_runner = MazeRunner(maze_example3['m'], maze_example3['s'], maze_example3['f'])
 #maze_runner = MazeRunner(maze_example4['m'], maze_example4['s'], maze_example4['f'])
 #print print_maze(maze_example2['m'], maze_example2['s'], maze_example2['f'])
 #print print_maze(maze_example3['m'], maze_example3['s'], maze_example3['f'])
