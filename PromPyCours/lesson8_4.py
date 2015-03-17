@@ -40,81 +40,22 @@ from random import shuffle
 
 def make_sudoku(size):
     f_size = size ** 2
-    idx = 1
-#    rez = [[0]*(f_size) for i in range(f_size)]
     rez = []
-    vals = [i for i in range(1, f_size + 1)]
-    for i in range(1, f_size + 1):
+    start_vals = [i for i in range(1, f_size + 1)]
+    shuffle(start_vals)
+    for i in range(0, size):
+        vals = start_vals
+        vals = vals[i:] + vals[:i]
         rez.append(vals)
-        if i != 6:
+        for j in range(size - 1):
             vals = vals[size:] + vals[:size]
-        if i == 3 or i == 6:
-            vals = vals[idx:] + vals[:idx]
-            idx += 1
+            rez.append(vals)
 
     return rez
-"""
-    vals = [i for i in range(1, size ** 2 + 1)]
-    rez = [[0 for j in range(1, size ** 2 + 1)] for i in range(1, size ** 2 + 1)]
-    shuffle(vals)
-    r_value = vals[::]
-    c_value = vals[1:]
-    shuffle(c_value)
-    r_count = 0
-    c_count = 1
 
-    for s_size in range(len(rez)-1):
-
-        for ii in range(0, len(r_value)):
-            rez[s_size][r_count + ii] = r_value[ii]
-        for jj in range(0, len(c_value)):
-                rez[jj + 1][c_count - 1] = c_value[jj]
-        print r_value
-#        print c_value
-
-        r_value.remove(rez[s_size + 1][0])
-        shuffle(r_value)
-        r_count += 1
-
-    return rez
- #trash
-    while count != 1:
-        rez = []
-        for i in range(size ** 2):
-            shuffle(vals)
-            rez.append(vals[::])
-        count = 0
-        for ii in range(size ** 2):
-            sud = set()
-            for jj in range(size ** 2):
-    #            print rez[jj][ii]
-                sud.add(rez[jj][ii])
-#            print len(sud)
-            if len(sud) == size ** 2:
-                count += 1
-            else:
-                break
-    return rez
-"""
-
-l = make_sudoku(3) # [[1]]
-#print l
+l = make_sudoku(3)
 print '----------'
 for ii in range(len(l)):
     print l[ii]
 
 print len(l), len(l[0])
-#print set(l[0][0], l[1][0], l[2][0], l[3][0])
-
-
-"""
-l = [1, 2, 3, 4]
-shuffle(l)
-print l
-shuffle(l)
-print l
-shuffle(l)
-print l
-"""
-
-print 6 % 3
