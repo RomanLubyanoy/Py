@@ -1,4 +1,7 @@
 # -*- coding:utf-8 -*-
+from random import randint
+
+
 def print_maze(maze,x,y):
     for i in range(len(maze)):
         s = ''
@@ -14,7 +17,7 @@ def print_maze(maze,x,y):
 
 
 class MazeRunner(object):
-    
+
     def __init__(self, maze, start, finish):
         self.__maze = maze
         self.__rotation = (1,0)
@@ -34,7 +37,7 @@ class MazeRunner(object):
         self.__y = y
         #print_maze(self.__maze, self.__x, self.__y)
         return True
-    
+
     def turn_left(self):
         left_rotation = {
             (0,1): (1,0),
@@ -44,7 +47,7 @@ class MazeRunner(object):
         }
         self.__rotation = left_rotation[self.__rotation]
         return self
-    
+
     def turn_right(self):
         right_rotation = {
             (1,0): (0,1),
@@ -54,15 +57,16 @@ class MazeRunner(object):
         }
         self.__rotation = right_rotation[self.__rotation]
         return self
-    
+
     def found(self):
         return self.__x == self.__finish[0] and self.__y == self.__finish[1]
 
 
 def maze_controller(mr):
+    """
 
 #    while mr.found() == False:
-    for steps in range(60):
+    for steps in range(1000):
         if mr.go():
             mr.go()
             mr.turn_left()
@@ -75,9 +79,27 @@ def maze_controller(mr):
         else:
             mr.turn_right()
         if mr.found():
-            print steps
+            print steps, 'v1'
             break
 
+    r_count = 0
+    for steps in range(1000000):
+        if mr.go():
+            if r_count == 0:
+                mr.turn_right()
+                r_count += 1
+        else:
+            mr.turn_left()
+            r_count = 0
+        if mr.found():
+            print steps, 'v2'
+            break
+    """
+
+    for steps in range(100000):
+        if mr.found():
+            print steps, 'v3'
+            break
 maze_example2 = {
     'm': [
         [0,0,0,0,0,0,0,1],
@@ -129,9 +151,9 @@ maze_example4 = {
     'f': (4,5)
 }
 
-maze_runner = MazeRunner(maze_example2['m'], maze_example2['s'], maze_example2['f'])
+#maze_runner = MazeRunner(maze_example2['m'], maze_example2['s'], maze_example2['f'])
 #maze_runner = MazeRunner(maze_example3['m'], maze_example3['s'], maze_example3['f'])
-#maze_runner = MazeRunner(maze_example4['m'], maze_example4['s'], maze_example4['f'])
+maze_runner = MazeRunner(maze_example4['m'], maze_example4['s'], maze_example4['f'])
 #print print_maze(maze_example2['m'], maze_example2['s'], maze_example2['f'])
 #print print_maze(maze_example3['m'], maze_example3['s'], maze_example3['f'])
 #print print_maze(maze_example4['m'], maze_example4['s'], maze_example4['f'])
